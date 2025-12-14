@@ -185,7 +185,7 @@ class MrvBtSearch(Generic[TVar, TVal], BtSearchTools[TVar, TVal]):
         
         # Gradheuristik
         variable = None
-        variable_constraints = 0
+        variable_constraints = -1
         
         
         for var in variables:
@@ -196,7 +196,10 @@ class MrvBtSearch(Generic[TVar, TVal], BtSearchTools[TVar, TVal]):
             for to in constraints:
                 if to is not None and state.get_assignment(to) is None:
                     c = c + 1
-                    
+            
+            # if c == 0:
+            #     raise Exception(f"Variable without constraint: {var}")
+            
             if c > variable_constraints:
                 variable = var
                 variable_constraints = c
