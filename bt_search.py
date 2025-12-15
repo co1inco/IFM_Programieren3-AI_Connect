@@ -92,11 +92,11 @@ class BtSearch(Generic[TVar, TVal]):
 
 def get_bt_result(bt_search : BtSearch[TVar, TVal]) -> Dict[TVal, List[TVar]]:
     
+    print("Step count: ", bt_search.count)
     if bt_search.result is None:
         print("No result found")
         return {}
     
-    print("Step count: ", bt_search.count)
     
     d = {}
     

@@ -1,21 +1,42 @@
 from typing import *
-
-
+import inspect
+import dis
+import inspect, ast, textwrap
 
 TVar = TypeVar('TVar')
 TVal = TypeVar('TVal')
 
+
+def lambda_source(lambda_func):
+    src = inspect.getsource(lambda_func)
+    src = textwrap.dedent(src)
+    tree = ast.parse(src)
+    # find the lambda node closest to the function's first line
+    class Finder(ast.NodeVisitor):
+        def __init__(self): self.node = None
+        def visit_Lambda(self, n): self.node = n
+    f = Finder(); f.visit(tree)
+    if f.node is None:
+        return src  # fallback
+    return ast.get_source_segment(src, f.node) or src
+
+
 class CpsConstraint(Generic[TVal]):
     _predicates : List[Callable[[TVal, TVal], bool]]
+    _originals : List[tuple[Callable[[TVal, TVal], bool], Callable[[TVal, TVal], bool]]]
     
     def __init__(self, predicate: Callable[[TVal, TVal], bool] = None):
         self._predicates = []
-        
+        self._originals = []    
         if predicate is not None:
             self._predicates.append(predicate)
     
     def append(self, predicate: Callable[[TVal, TVal], bool]) -> None:
         self._predicates.append(predicate)
+        
+    def append_rev(self, predicate: Callable[[TVal, TVal], bool], original: Callable[[TVal, TVal], bool]) -> None:
+        self._predicates.append(predicate)
+        self._originals.append((predicate, original))
         
     def is_conflicting(self, a: TVal, b: TVal) -> bool:
         """
@@ -26,6 +47,31 @@ class CpsConstraint(Generic[TVal]):
             if not p(a, b):
                 return True
         return False
+    
+    def _find_original(self, predicate: Callable[[TVal, TVal], bool]):
+        for c, o in self._originals:
+            if c == predicate:
+                return o
+        return None
+    
+    def __str__(self):
+        s = []
+        for c in self._predicates:
+            # s.append(str(c))
+            # s.append(inspect.getsource(c))
+            # s.append(lambda_source(self._originals[c]))
+            
+            og = self._find_original(c)
+            if og is not None:
+                s.append("REV: " + lambda_source(og))
+            else:
+                s.append(lambda_source(c))
+
+            # s.append(dis.code_info(c))
+        return " && ".join(s)
+    
+    def __repr__(self):
+        return self.__str__()
     
         
 
@@ -76,7 +122,7 @@ class CpsConfiguration(Generic[TVar, TVal]):
         self._constraints[source][target].append(predicate)
         
         self._ensure_exists(target, source)
-        self._constraints[target][source].append(lambda a, b: predicate(b, a))
+        self._constraints[target][source].append_rev(lambda a, b: predicate(b, a), predicate)
     
     
     def addUnaryConstraint(self, source : TVar, predicate : Callable[[TVal], bool]) -> None:
@@ -127,7 +173,11 @@ class CpsConfiguration(Generic[TVar, TVal]):
         s += ' Variables: [\n'
         for v in self._variables:
             s += f'  {v}\n'    
-        s += ' ]'
+        s += ' ]\n'
+        s += 'Constraints: [\n'
+        for left in self._constraints:
+            for right in self._constraints[left]:
+                s += f'({left}, {right}) => {self._constraints[left][right]}\n'
         s += '}'
         return s
     
