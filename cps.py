@@ -312,8 +312,17 @@ class CpsState(Generic[TVar, TVal]):
                 values.append(value)
                 
         return values
+    
+    def __str__(self):
+        d = {}
+        
+        for val in self.get_values():
+            d[val] = self.get_variables_with(val)
             
-            
+        return str(d)
+    
+    def __repr__(self):
+        return self.__str__()
             
         
         

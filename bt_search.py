@@ -39,9 +39,14 @@ class BtSearch(Generic[TVar, TVal]):
     count : int
     result : CpsState[TVar, TVal] | None
     
+    dead_ends : List[CpsState[TVar, TVal]]
+    trace : List[CpsState[TVar, TVal]]
+    
     def __init__(self, tool: BtSearchTools):
         self._tool = tool
         self.count = 0
+        self.dead_ends = []
+        self.trace = []
         
     
     @staticmethod
@@ -51,6 +56,8 @@ class BtSearch(Generic[TVar, TVal]):
         return instance
         
     def _search(self, state : CpsState[TVar, TVal]) -> CpsState[TVar, TVal] | None:
+        
+        self.trace.append(state)
         
         if state.is_complete():
             return state
@@ -64,17 +71,21 @@ class BtSearch(Generic[TVar, TVal]):
         if variable is None:
             return None
         
+        recursed = False
         for value in self._tool.get_values(state, variable):
             
             if state.will_be_consistent(variable, value):
                 new_state = state.assign(variable, value)
                 
                 if self._tool.inference(new_state, variable, value):
-                    
+                    recursed = True
                     result = self._search(new_state)
                     
                     if result is not None:
                         return result
+        
+        if not recursed:
+            self.dead_ends.append(state)
         
         return None
     
