@@ -111,7 +111,9 @@ class CpsConfiguration(Generic[TVar, TVal]):
 
     def mustBe(self, source : TVar, value : TVal) -> None:
         self.addUnaryConstraint(source, lambda a: a == value)
-        
+    
+    def mustNotBe(self, source : TVar, value : TVal) -> None:
+        self.addUnaryConstraint(source, lambda a: a != value)
 
     def get_constraints(self, variable : TVar) -> Dict[TVar, CpsConstraint[TVal] ]:
         return self._constraints[variable]

@@ -120,6 +120,18 @@ def check_for_single_clue(var1, regex, text):
 def analyze_clue(vars, clue):
     
     if len(vars) == 1:
+        if check_for_single_clue(vars[0], "%1(.*?) not in the first house", clue):
+            return "not1"
+        if check_for_single_clue(vars[0], "%1(.*?) not in the second house", clue):
+            return "not2"
+        if check_for_single_clue(vars[0], "%1(.*?) not in the third house", clue):
+            return "not3"
+        if check_for_single_clue(vars[0], "%1(.*?) not in the fourth house", clue):
+            return "not4"
+        if check_for_single_clue(vars[0], "%1(.*?) not in the fifth house", clue):
+            return "not5"
+        if check_for_single_clue(vars[0], "%1(.*?) not in the sixth house", clue):
+            return "not6"
         if check_for_single_clue(vars[0], "%1(.*?) first house", clue):
             return "is1"
         if check_for_single_clue(vars[0], "%1(.*?) second house", clue):
