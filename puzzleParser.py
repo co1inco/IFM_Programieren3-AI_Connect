@@ -5,16 +5,41 @@ from typing import *
 
 ##### Variables
 
+class PzVariable:
+    name : str
+    clues_ident : List[str]
+
+    def __init__(self, name : str, clue_ident : List[str]):
+        self.name = name
+        self.clues_ident = clue_ident
+
+    def is_for_clue_value(self, clue_ident : str):
+        for c in self.clues_ident:
+            if c == clue_ident:
+                return True
+        return False
+    
+    def __str__(self):
+        return self.name
+    
+    def __repr__(self):
+        return self.__str__()
+        
+
+
 class PzVariableGroup:
     name : str
-    variables : List[str]
+    variables : List[PzVariable]
     
-    def __init__(self, name : str, variables: List[str]):
+    def __init__(self, name : str, variables: List[PzVariable]):
         self.name = name
         self.variables = variables
         
     def __str__(self):
-        return f'[{", ".join(self.variables)}] {self.name}'
+        t = list(map(lambda i: str(i), self.variables))
+    
+        return f'[{", ".join(t)}] "{self.name}"'
+        # return f'[{", ".join(self.variables)}] {self.name}'
     
     def __repr__(self):
         return self.__str__()
@@ -36,41 +61,47 @@ def parse_puzzle_variable(text : str, house_count : int) -> List[PzVariableGroup
         group_name = group[0]
         
         # clean-up / transform the variables that they match with their usage in clues
-        cleaned_variables = []
+        group_variables = []
         for v in group[1:]:
             if ("child" in group_name):
-                cleaned_variables.append(f'child is named {v}')
-                cleaned_variables.append(f'mother of {v}')
+                group_variables.append(PzVariable("c." + v, [f'child is named {v}', f'mother of {v}']))
                 
             elif "month" in group_name:
                 if v == "jan": 
-                    cleaned_variables.append("january")
+                    group_variables.append(PzVariable(v, ["january"]))
                 else:
-                    cleaned_variables.append(v)
+                    group_variables.append(PzVariable(v, [v]))
+            
+            elif "favorite color" in group_name:
+                group_variables.append(PzVariable("f." + v, ["favorite color is " + v, "loves " + v]))
+                
+            elif "hair colors" in group_name:
+                group_variables.append(PzVariable("h." + v, [v + " hair"]))
             
             # elif "keep unique animals" in group_name:
             #     l.append(f'{v} kepper')
                 
             elif "hip hop" == v:
-                cleaned_variables.append("hip-hop")
+                group_variables.append(PzVariable(v, ["hip-hop"]))
                 
             elif "swede" == v:
-                cleaned_variables.append("swedish")
+                group_variables.append(PzVariable(v, ["swedish"]))
             
             elif "ford f150" == v:
-                cleaned_variables.append("Ford F-150")
+                group_variables.append(PzVariable(v, ["Ford F-150"]))
             
             elif "cat" == v: 
-                cleaned_variables.append(" cat") # prevent match with vacation
-                
+                group_variables.append(PzVariable(v, [" cat"])) # prevent match with vacation
+                        
             else:
-                if v.endswith('ing'):
-                    v = v[:-3]
-                elif v.endswith('s'):
-                    v = v[:-1]
-                cleaned_variables.append(v)
+                v_mod = v
+                if v_mod.endswith('ing'):
+                    v_mod = v_mod[:-3]
+                elif v_mod.endswith('s'):
+                    v_mod = v_mod[:-1]
+                group_variables.append(PzVariable(v, [v_mod]))
         
-        variables.append(PzVariableGroup(group_name, cleaned_variables))
+        variables.append(PzVariableGroup(group_name, group_variables))
 
     return variables
 
@@ -120,18 +151,6 @@ def check_for_single_clue(var1, regex, text):
 def analyze_clue(vars, clue):
     
     if len(vars) == 1:
-        if check_for_single_clue(vars[0], "%1(.*?) not in the first house", clue):
-            return "not1"
-        if check_for_single_clue(vars[0], "%1(.*?) not in the second house", clue):
-            return "not2"
-        if check_for_single_clue(vars[0], "%1(.*?) not in the third house", clue):
-            return "not3"
-        if check_for_single_clue(vars[0], "%1(.*?) not in the fourth house", clue):
-            return "not4"
-        if check_for_single_clue(vars[0], "%1(.*?) not in the fifth house", clue):
-            return "not5"
-        if check_for_single_clue(vars[0], "%1(.*?) not in the sixth house", clue):
-            return "not6"
         if check_for_single_clue(vars[0], "%1(.*?) first house", clue):
             return "is1"
         if check_for_single_clue(vars[0], "%1(.*?) second house", clue):
@@ -167,6 +186,13 @@ def analyze_clue(vars, clue):
     return None
 
 
+def resolve_clue_var_name(variables: List[PzVariableGroup], var : str):
+    for group in variables:
+        for v in group.variables:
+            if v.is_for_clue_value(var):
+                return v.name
+    return None
+
 def analyze_clues(variables: List[PzVariableGroup], raw_clues : List[str]) -> List[PzClue]:
 
     # sometimes a variable contains another variables value (eg: 'child of alice' and 'alice')
@@ -175,8 +201,9 @@ def analyze_clues(variables: List[PzVariableGroup], raw_clues : List[str]) -> Li
     all_variables = []
     for var_group in variables:
         for var in var_group.variables:
-            all_variables.append(var)
+            all_variables.extend(var.clues_ident)
     all_variables = sorted(all_variables, key=len, reverse=True)
+    # print(all_variables)
     
     clues = []
     for c in raw_clues:
@@ -190,13 +217,22 @@ def analyze_clues(variables: List[PzVariableGroup], raw_clues : List[str]) -> Li
                 # test_clue = test_clue.replace(var, "")
                 test_clue = re.sub(re.escape(var), '', test_clue, flags=re.IGNORECASE)
         
+        # ensure variables are in the order they appear in the clue
         lower_clue = c.lower()    
-        vars = sorted(vars, key=lambda s: lower_clue.find(s.lower()))
-                
+        vars = sorted(vars, key=lambda s: lower_clue.find(s.lower()))       
+                        
         # find the function the clue implies
         func = analyze_clue(vars, c)
         
-        clues.append( PzClue(c, vars, func) )
+        # resolve group name from clue variables
+        vars2 = []
+        for clue_var in vars:
+            og_var = resolve_clue_var_name(variables, clue_var)
+            if og_var is None:
+                raise Exception(f"Failed to resolve all clue variables: {clue_var} from {variables}")
+            vars2.append(og_var)
+        
+        clues.append( PzClue(c, vars2, func) )
 
     return clues
     
