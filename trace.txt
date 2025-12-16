@@ -1,92 +1,53 @@
-{1: [], 2: [], 3: [], 4: []} | master | 2
-{1: [], 2: [master], 3: [], 4: []} | horse | 1
-{1: [horse], 2: [master], 3: [], 4: []} | tea | 2
-{1: [horse], 2: [master, tea], 3: [], 4: []} | associate | 1
-{1: [horse], 2: [master, tea], 3: [], 4: []} | associate | 3
-{1: [horse], 2: [master, tea], 3: [associate], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
-{1: [horse], 2: [master, tea], 3: [associate, bird], 4: []} | bird | 3
+{1: [], 2: [], 3: [], 4: []} | Eric | 1
+{1: [Eric], 2: [], 3: [], 4: []} | Alice | 2
+{1: [Eric], 2: [Alice], 3: [], 4: []} | Arnold | 3
+{1: [Eric], 2: [Alice], 3: [Arnold], 4: []} | Peter | 4
+{1: [Eric], 2: [Alice], 3: [], 4: []} | Arnold | 4
+{1: [Eric], 2: [], 3: [], 4: []} | Alice | 3
+{1: [Eric], 2: [], 3: [Alice], 4: []} | Arnold | 2
+{1: [Eric], 2: [Arnold], 3: [Alice], 4: []} | Peter | 4
+{1: [Eric], 2: [], 3: [Alice], 4: []} | Arnold | 4
+{1: [Eric], 2: [], 3: [], 4: []} | Alice | 4
+{1: [Eric], 2: [], 3: [], 4: [Alice]} | Arnold | 2
+{1: [Eric], 2: [Arnold], 3: [], 4: [Alice]} | Peter | 3
+{1: [Eric], 2: [Arnold], 3: [Peter], 4: [Alice]} | master | 2
+{1: [Eric], 2: [], 3: [], 4: [Alice]} | Arnold | 3
+{1: [Eric], 2: [], 3: [Arnold], 4: [Alice]} | Peter | 2
+{1: [], 2: [], 3: [], 4: []} | Eric | 2
+{1: [], 2: [Eric], 3: [], 4: []} | Alice | 1
+{1: [Alice], 2: [Eric], 3: [], 4: []} | Arnold | 3
+{1: [Alice], 2: [Eric], 3: [Arnold], 4: []} | Peter | 4
+{1: [Alice], 2: [Eric], 3: [], 4: []} | Arnold | 4
+{1: [], 2: [Eric], 3: [], 4: []} | Alice | 3
+{1: [], 2: [Eric], 3: [Alice], 4: []} | Arnold | 1
+{1: [Arnold], 2: [Eric], 3: [Alice], 4: []} | Peter | 4
+{1: [], 2: [Eric], 3: [Alice], 4: []} | Arnold | 4
+{1: [], 2: [Eric], 3: [], 4: []} | Alice | 4
+{1: [], 2: [Eric], 3: [], 4: [Alice]} | Arnold | 1
+{1: [Arnold], 2: [Eric], 3: [], 4: [Alice]} | Peter | 3
+{1: [Arnold], 2: [Eric], 3: [Peter], 4: [Alice]} | master | 2
+{1: [Arnold], 2: [Eric, master], 3: [Peter], 4: [Alice]} | high school | 1
+{1: [Arnold], 2: [Eric, master], 3: [Peter], 4: [Alice]} | high school | 3
+{1: [Arnold], 2: [Eric, master], 3: [Peter, high school], 4: [Alice]} | associate | 1
+{1: [Arnold, associate], 2: [Eric, master], 3: [Peter, high school], 4: [Alice]} | bachelor | 4
+{1: [Arnold, associate], 2: [Eric, master], 3: [Peter, high school], 4: [Alice, bachelor]} | bird | 1
+{1: [Arnold], 2: [Eric, master], 3: [Peter], 4: [Alice]} | high school | 4
+{1: [Arnold], 2: [Eric, master], 3: [Peter], 4: [Alice, high school]} | associate | 1
+{1: [Arnold, associate], 2: [Eric, master], 3: [Peter], 4: [Alice, high school]} | bachelor | 3
+{1: [Arnold, associate], 2: [Eric, master], 3: [Peter, bachelor], 4: [Alice, high school]} | bird | 1
+{1: [], 2: [Eric], 3: [], 4: [Alice]} | Arnold | 3
+{1: [], 2: [Eric], 3: [Arnold], 4: [Alice]} | Peter | 1
+{1: [], 2: [], 3: [], 4: []} | Eric | 3
+{1: [], 2: [], 3: [Eric], 4: []} | Alice | 1
+{1: [Alice], 2: [], 3: [Eric], 4: []} | Arnold | 2
+{1: [Alice], 2: [Arnold], 3: [Eric], 4: []} | Peter | 4
+{1: [Alice], 2: [], 3: [Eric], 4: []} | Arnold | 4
+{1: [], 2: [], 3: [Eric], 4: []} | Alice | 2
+{1: [], 2: [Alice], 3: [Eric], 4: []} | Arnold | 1
+{1: [Arnold], 2: [Alice], 3: [Eric], 4: []} | Peter | 4
+{1: [], 2: [Alice], 3: [Eric], 4: []} | Arnold | 4
+{1: [], 2: [], 3: [Eric], 4: []} | Alice | 4
+{1: [], 2: [], 3: [Eric], 4: [Alice]} | Arnold | 1
+{1: [Arnold], 2: [], 3: [Eric], 4: [Alice]} | Peter | 2
+{1: [], 2: [], 3: [Eric], 4: [Alice]} | Arnold | 2
+{1: [], 2: [Arnold], 3: [Eric], 4: [Alice]} | Peter | 1
