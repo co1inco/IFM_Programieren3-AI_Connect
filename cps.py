@@ -209,10 +209,10 @@ class CpsState(Generic[TVar, TVal]):
         Returns a new state with the given assignment. (A state is immutable)
         """
         if variable not in self._config.variables():
-            raise Exception("Invalid variable assigned: " + str(variable), ", allowed: ", self._config.variables())
+            raise Exception(f"Invalid variable assigned: '{variable}', allowed: {self._config.variables()}")
         
         if value not in self._config.values():
-            raise Exception("Invalid value assigned: " + str(value), ", allowed: ", self._config.values())
+            raise Exception(f"Invalid value assigned: '{str(value)}', allowed: {self._config.values()}")
         
         return CpsState(self._config, self, variable, value)
     
